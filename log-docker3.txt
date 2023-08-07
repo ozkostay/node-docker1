@@ -1,0 +1,41 @@
+1. ============================================
+docker pull node
+Using default tag: latest
+latest: Pulling from library/node
+785ef8b9b236: Pull complete 
+5a6dad8f55ae: Pull complete 
+bd36c7bfe5f4: Pull complete 
+4d207285f6d2: Pull complete 
+e1c045e015f5: Pull complete 
+4d81a4d3e863: Pull complete 
+175333a01129: Pull complete 
+87f55ccb38ca: Pull complete 
+Digest: sha256:64b71834718b859ea389790ae56e5f2f8fa9456bf3821ff75fa28a87a09cbc09
+Status: Downloaded newer image for node:latest
+docker.io/library/node:latest
+
+
+2. ============================================
+docker run --name first_node -d -v ./data:/var/first/data node
+2528c1e708b898a8b0ea7e9bcbf18cd21a5d82d6a62bd1181c5095be5874f7fa
+
+3. ============================================
+docker run --name second_node -d -v ./data:/var/second/data node
+66ada8366d3e688cb812ee05122d2838ad11d2f7f3021336a0d53045c4305560
+
+4. ============================================
+
+
+5. ============================================
+
+6. ============================================
+
+
+7. ============================================
+
+8. ============================================
+
+9. ============================================
+
+
+
