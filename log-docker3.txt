@@ -16,26 +16,74 @@ docker.io/library/node:latest
 
 
 2. ============================================
-docker run --name first_node -d -v ./data:/var/first/data node
-2528c1e708b898a8b0ea7e9bcbf18cd21a5d82d6a62bd1181c5095be5874f7fa
+docker run -it --name first_node -w /var/first/data -v $(pwd)/data:/var/first/data node /bin/bash
+root@9243f5384d2c:/var/first/data#
 
 3. ============================================
-docker run --name second_node -d -v ./data:/var/second/data node
-66ada8366d3e688cb812ee05122d2838ad11d2f7f3021336a0d53045c4305560
+docker run -it --name second_node -w /var/second/data -v $(pwd)/data:/var/second/data node /bin/bash
+root@2c0e6d6c21e2:/var/second/data#
 
 4. ============================================
-
+docker exec -i first_node /bin/bash
+touch test_first.txt
+cat > test_first.txt
+Эта запись создана в контейнере first_node
 
 5. ============================================
+~/Documents/konst/IT/Netology/Node/node-docker1/data$ touch test_host.txt
+cat > test_рщые.txt
+Эта запись создана на host машине
 
 6. ============================================
+docker exec -i second_node /bin/bash
+ls
+test_first.txt
+test_host.txt
+cat test_first.txt
+Эта запись создана в контейнере first_node
+cat test_host.txt
+Этот файл создан на Host машине
 
 
 7. ============================================
+docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+2c0e6d6c21e2   node      "docker-entrypoint.s…"   37 minutes ago   Up 37 minutes             second_node
+9243f5384d2c   node      "docker-entrypoint.s…"   43 minutes ago   Up 23 minutes             first_node
+
+docker stop first_node 
+first_node
+
+docker stop 2c
+2c
+
+docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                            PORTS     NAMES
+2c0e6d6c21e2   node      "docker-entrypoint.s…"   39 minutes ago   Exited (137) 44 seconds ago                 second_node
+9243f5384d2c   node      "docker-entrypoint.s…"   45 minutes ago   Exited (137) About a minute ago             first_node
 
 8. ============================================
+docker rm 2c0e6d6c21e2
+2c0e6d6c21e2
+
+docker rm 9243f5384d2c
+9243f5384d2c
 
 9. ============================================
-
+docker rmi node
+Untagged: node:latest
+Untagged: node@sha256:64b71834718b859ea389790ae56e5f2f8fa9456bf3821ff75fa28a87a09cbc09
+Deleted: sha256:725940b2828cd145e8fa3fd24de0a44de50549f8681665888daff6320c020aec
+Deleted: sha256:d77646b844efba406c8b0599edd7de15eb1fd8496cd6d28c530e72d45a85b697
+Deleted: sha256:8f6f4bd1789195fc7623c9d20a3dde350678ecd8e40ddb28b08b2946e7560447
+Deleted: sha256:4a6c67c4cd22e451e53e0565e3ef4a866104593e9a5613fe183ab577c27cb748
+Deleted: sha256:6128e413829e2a5ff4037f13f859b4b30a681267bb977de014ecf698e1f86e47
+Deleted: sha256:0e9bc49d0077eee4312b55ea5c018dc448f1c95bc913e44ab205127801b3ec04
+Deleted: sha256:a7260186f24827b9d7a3ed8a02d1842b309b60b0306c0f0af56d3afbc9c45cde
+Deleted: sha256:1a1c31748c9aee1c931ccccab38eb46e4a0d469b01df388b02cdfa8839ee8ef7
+Deleted: sha256:c94dc8fa3d891058c327966e2daabbb468a8a3adf0774064677e0fdf30d88d71
 
 
